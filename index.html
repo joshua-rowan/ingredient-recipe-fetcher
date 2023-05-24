@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Recipe Maker</title>
+  </head>
+
+  <body>
+    <header class="hero">
+      <h1 class="app-title"><i class=""></i>Recipe Maker</h1>
+      <p>Choose an ingredient, select a recipe, PRESTO!</p>
+    </header>
+
+    <main>
+        <div class="col-12 col-md-4">
+
+            <div class="card">
+            <h3 class="card-header text-uppercase">Search By Ingredient</h3>
+              <form id="user-form" class="card-body">
+                <label class="form-label" for="ingredient">Ingredient</label>
+                <input name="ingredient" id="ingredient" type="text" autofocus="true" class="form-input" />
+                <button type="submit" class="btn">Submit</button>
+              </form>
+            </div>
+
+
+            <div class="card">
+            <h3 class="card-header text-uppercase" id="recipe-1">Recipe 1</h3>
+            <div id="recipe-results" class="card-body">
+                <button id="recipe-1" class="btn">Recipe</button>
+                <!-- <div aria-modal="recipe-1"></div> -->
+                <div id="recipe-1" class="btn">Video placeholder</div>
+            </div>
+
+            <div class="card">
+            <h3 class="card-header text-uppercase">Recipe 2</h3>
+            <div id="recipe-results" class="card-body">
+                <button id="recipe-2" class="btn">Recipe</button>
+
+                <div id="recipe-2" class="btn">Video placeholder</div>
+            </div>
+            
+            <div class="card">
+            <h3 class="card-header text-uppercase">Lemon Chicken</h3>
+            <div id="recipe-results" class="card-body">
+                <button id="recipe-3" class="btn">Recipe</button>
+
+                <div id="recipe-3" class="btn">Video placeholder</div>
+            </div>
+
+            <div class="card">
+            <h3 class="card-header text-uppercase">Recipe 4</h3>
+            <div id="recipe-results" class="card-body">
+                <button id="recipe-4" class="btn">Recipe</button>
+
+                <div id="recipe-4" class="btn">Video placeholder</div>
+            </div>
+
+            <div class="card">
+            <h3 class="card-header text-uppercase">Recipe 5</h3>
+            <div id="recipe-results" class="card-body">
+                <button id="recipe-5" class="btn">Recipe</button>
+
+                <div id="recipe-5" class="btn">Video placeholder</div>
+            </div>
+        </div>
+    </div>
+
+    </main>
+    <script src="./assets/script.js"></script>
+  </body>
+</html>
