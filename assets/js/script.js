@@ -7,8 +7,6 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
 
     // Check if the ingredient field is empty
     if (ingredient === '') {
-        // Show an error message (maybe a modal or a text div)
-        // Note: Add code here to display an error message to the user
     } else {
         // Make a request to the Spoonacular API using fetch
         fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${ingredient}&apiKey=fa525252038c4c7b9eab77fa927efd6f`)
