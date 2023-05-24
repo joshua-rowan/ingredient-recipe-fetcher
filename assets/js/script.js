@@ -7,6 +7,7 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
 
     // Check if the ingredient field is empty
     if (ingredient === '') {
+        displayError('Please enter an ingredient.');
     } else {
         // Make a request to the Spoonacular API using fetch
         fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${ingredient}&apiKey=fa525252038c4c7b9eab77fa927efd6f`)
