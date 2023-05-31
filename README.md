@@ -7,7 +7,7 @@ This is for anyone who has ever looked at their pantry and or their refrigerator
 The Ingredient Recipe Maker solves this problem. The user can input their ingredients and our app will offer a recipe, as well as a related youtube video to help them decide what to cook.
 
 ## Link
-Coming Soon!
+https://joshua-rowan.github.io/ingredient-recipe-fetcher/
 
 ## Screenshot
 Coming Soon!
