@@ -1,0 +1,42 @@
+.hero {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/food.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  filter: brightness(75%);
+  top: 0;
+  left: 0;
+}
+/* 
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+} */
+
+.hero-content {
+  position: relative;
+  font-family: "Monserrat", sans-serif;
+  color: black;
+  text-align: center;
+  margin: 0.625rem;
+  filter: brightness(100%);
+}
+.hero-title {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 0;
+  background-color: pink;
+}
+.hero-subtitle {
+  font-size: 2rem;
+  font-weight: 200;
+  margin-top: 1rem;
+}

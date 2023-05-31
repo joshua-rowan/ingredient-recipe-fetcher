@@ -1,5 +1,6 @@
 // Add event listener to the form when it is submitted
 $(document).ready(function(){
+  retrieveIngredients();
 document.getElementById('user-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
@@ -9,6 +10,9 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
     if (ingredient === '') {
       displayError('Please enter an ingredient.');
     } else {
+      // Calls the ingredientStorage for local storage
+      ingredientStorage(ingredient)
+      
       fetch(
         `https://api.spoonacular.com/recipes/complexSearch?query=${ingredient}&apiKey=${SPOONACULAR_KEY}`
       )
@@ -49,7 +53,7 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
 
             data.items.forEach(item => {
                 var video = `
-                <iframe width="420" height="315" scr="http://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
+                <iframe width="420" height="315" src="http://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
                 `
                 console.log(video)
 
@@ -60,3 +64,51 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
     }
 })
 // End of Youtube API script
+
+//Previous Search Storage and Retrieval
+
+function ingredientStorage(ingredient) {
+  let searches = localStorage.getItem("ingredientSearches");
+
+  if (searches) {
+    searches = JSON.parse(searches);
+
+    if(!searches.includes(ingredient)) {
+      searches.push(ingredient);
+    }
+  } else {
+    searches = [ingredient];
+  }
+
+  localStorage.setItem("ingredientSearches", JSON.stringify(searches));
+};
+
+function retrieveIngredients() {
+  let searches = localStorage.getItem("ingredientSearches");
+
+  if (searches) {
+    searches = JSON.parse(searches);
+
+    let oldSearchesDiv = document.getElementById("old-searches");
+
+    oldSearchesDiv.innerHTML = "";
+
+    searches.forEach(function(ingredient) {
+      let button = document.createElement("button");
+      button.textContent = ingredient;
+      button.classList.add("btn", "btn-primary", "mb-2", "old-search-btn");
+      button.style.backgroundColor = "#6c757d";
+
+      button.addEventListener("click", function() {
+        document.getElementById("ingredient").value = ingredient;
+        document.getElementById("user-form").dispatchEvent(new Event("submit"));
+      });
+
+      let buttonContainer = document.createElement("div");
+      buttonContainer.classList.add("d-grid");
+      buttonContainer.appendChild(button);
+
+      oldSearchesDiv.appendChild(buttonContainer);
+    })
+  }
+}
