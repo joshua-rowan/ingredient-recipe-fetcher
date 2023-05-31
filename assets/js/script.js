@@ -4,6 +4,7 @@ $(document).ready(function(){
 document.getElementById('user-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
+    var SPOONACULAR_KEY = "fa525252038c4c7b9eab77fa927efd6f";
     let ingredient = $('#ingredient').val(); // Get the value entered in the 'ingredient' input field
 
     if (ingredient === '') {
@@ -13,7 +14,7 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
       ingredientStorage(ingredient)
       
       fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?query=${ingredient}&apiKey=fa525252038c4c7b9eab77fa927efd6f`
+        `https://api.spoonacular.com/recipes/complexSearch?query=${ingredient}&apiKey=${SPOONACULAR_KEY}`
       )
         .then(response => response.json()) // Parse the response as JSON
         .then(data => {
