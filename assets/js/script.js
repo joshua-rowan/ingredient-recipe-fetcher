@@ -1,6 +1,6 @@
 // Add event listener to the form when it is submitted
 $(document).ready(function(){
-  retrieveIngredients();
+  //retrieveIngredients();
 document.getElementById('user-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
@@ -11,7 +11,7 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
       displayError('Please enter an ingredient.');
     } else {
       // Calls the ingredientStorage for local storage
-      ingredientStorage(ingredient)
+      //ingredientStorage(ingredient)
       
       fetch(
         `https://api.spoonacular.com/recipes/complexSearch?query=${ingredient}&apiKey=${SPOONACULAR_KEY}`
