@@ -1,17 +1,20 @@
 // Add event listener to the form when it is submitted
 $(document).ready(function () {
-  document.getElementById('user-form').addEventListener('submit', function (event) {
+    retrieveIngredients();
+document.getElementById('user-form').addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
+    var SPOONACULAR_KEY = "fa525252038c4c7b9eab77fa927efd6f";
     let ingredient = $('#ingredient').val(); // Get the value entered in the 'ingredient' input field
 
     if (ingredient === '') {
       displayError('Please enter an ingredient.');
     } else {
+      // Calls the ingredientStorage for local storage
+      ingredientStorage(ingredient)
+      
       fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?query=${ingredient}&apiKey=4f8a937874c143d6af299911c017cdb7`
-        // fa525252038c4c7b9eab77fa927efd6f
-        // 4f8a937874c143d6af299911c017cdb7
+        `https://api.spoonacular.com/recipes/complexSearch?query=${ingredient}&apiKey=${SPOONACULAR_KEY}`
       )
 
         .then(response => response.json()) // Parse the response as JSON
@@ -74,3 +77,51 @@ $(document).ready(function () {
 
 });
 // End of Youtube API script
+
+//Previous Search Storage and Retrieval
+
+function ingredientStorage(ingredient) {
+  let searches = localStorage.getItem("ingredientSearches");
+
+  if (searches) {
+    searches = JSON.parse(searches);
+
+    if(!searches.includes(ingredient)) {
+      searches.push(ingredient);
+    }
+  } else {
+    searches = [ingredient];
+  }
+
+  localStorage.setItem("ingredientSearches", JSON.stringify(searches));
+};
+
+function retrieveIngredients() {
+  let searches = localStorage.getItem("ingredientSearches");
+
+  if (searches) {
+    searches = JSON.parse(searches);
+
+    let oldSearchesDiv = document.getElementById("old-searches");
+
+    oldSearchesDiv.innerHTML = "";
+
+    searches.forEach(function(ingredient) {
+      let button = document.createElement("button");
+      button.textContent = ingredient;
+      button.classList.add("btn", "btn-primary", "mb-2", "old-search-btn");
+      button.style.backgroundColor = "#6c757d";
+
+      button.addEventListener("click", function() {
+        document.getElementById("ingredient").value = ingredient;
+        document.getElementById("user-form").dispatchEvent(new Event("submit"));
+      });
+
+      let buttonContainer = document.createElement("div");
+      buttonContainer.classList.add("d-grid");
+      buttonContainer.appendChild(button);
+
+      oldSearchesDiv.appendChild(buttonContainer);
+    })
+  }
+}
