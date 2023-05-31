@@ -3,13 +3,14 @@ $(document).ready(function(){
 document.getElementById('user-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
+    var SPOONACULAR_KEY = "7e276a12a73b44419214ef5b1b3f773a";
     let ingredient = $('#ingredient').val(); // Get the value entered in the 'ingredient' input field
 
     if (ingredient === '') {
       displayError('Please enter an ingredient.');
     } else {
       fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?query=${ingredient}&apiKey=fa525252038c4c7b9eab77fa927efd6f`
+        `https://api.spoonacular.com/recipes/complexSearch?query=${ingredient}&apiKey=${SPOONACULAR_KEY}`
       )
         .then(response => response.json()) // Parse the response as JSON
         .then(data => {
