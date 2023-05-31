@@ -19,11 +19,22 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
         .then(response => response.json()) // Parse the response as JSON
         .then(data => {
           // Display recipe data on the page
+          // Display recipe images on the page
+        
           $('#recipe-1').text(data.results[0].title);
+          $('#recipe-1-img').attr("src", data.results[0].image);
+        
           $('#recipe-2').text(data.results[1].title);
+          $('#recipe-2-img').attr("src", data.results[1].image);
+        
           $('#recipe-3').text(data.results[2].title);
+          $('#recipe-3-img').attr("src", data.results[2].image);
+        
           $('#recipe-4').text(data.results[3].title);
+         $('#recipe-4-img').attr("src", data.results[3].image);
+        
           $('#recipe-5').text(data.results[4].title);
+         $('#recipe-5-img').attr("src", data.results[4].image);
         })
         .catch(error => console.error('Error:', error)); // Handle any errors that occur during the fetch request
     }
