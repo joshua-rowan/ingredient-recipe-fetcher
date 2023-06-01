@@ -1,4 +1,5 @@
 // Add event listener to the form when it is submitted
+
 $(document).ready(function(){
   //retrieveIngredients();
 document.getElementById('user-form').addEventListener('submit', function(event) {
@@ -35,47 +36,60 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
 
           $('#recipe-5').text(data.results[4].title);
           $('#recipe-5-img').attr("src", data.results[4].image);
-
         })
+      // Calls Youtube script
+        .then(() => {
+            videoSearch()
+          })
         .catch(error => console.error('Error:', error)); // Handle any errors that occur during the fetch request
     }
 
-    // Calls Youtube script
-    videoSearch();
+    
 
 });
 
 // Start of Youtube API script
-
-    var YOUTUBE_KEY = "AIzaSyD8ErezZUPBFLnVZefQzomDWZSPrnWXGuo"
-    
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  
+    var YOUTUBE_KEY = "AIzaSyBHA_8ZW1dMQRFMoF1vXgt2FIsaChA67VU"
+    // AIzaSyClmA-vVU22gtzHVrndDe0hRL_GVocH7CQ 
+    // AIzaSyBHA_8ZW1dMQRFMoF1vXgt2FIsaChA67VU
+  
+    var maxResults = 1
+  
     function videoSearch() {
-
-        $("#recipe-1-video").empty()
-
-      
-        var recipeTitle = $("#recipe-1")[0].textContent + " recipe";
-        console.log(recipeTitle);
-       
-        var maxResults = 1
-       
-
-        $.get("https://www.googleapis.com/youtube/v3/search?key=" + YOUTUBE_KEY + '&type=video&part=snippet&maxResults=' + maxResults + '&q=' + recipeTitle,function(data){
-            console.log(data)
-
-            data.items.forEach(item => {
-                var video = `
-                <iframe width="420" height="315" src="http://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
-                `
-                console.log(video)
-
-                $("#recipe-1-video").append(video)
-
-            });
-        })
+  
+      for (let i = 1; i < 6; i++) {
+        $(`#player-${i}-zone`).html(`<div id="ytplayer-${i}"></div> `);
+      }
+  
+      for (let i = 1; i < 6; i++) {
+        let temp = $(`#recipe-${i}`)[0].textContent + " recipe"
+        $.get(`https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_KEY}&type=video&part=snippet&maxResults=${maxResults}&q=${temp}`, function (data) {
+  
+          var recipeId = data.items[0].id.videoId
+  
+          onYouTubePlayerAPIReady(i, recipeId)
+  
+        });
+      }
+  
     }
-})
-// End of Youtube API script
+  
+    var player;
+    function onYouTubePlayerAPIReady(i, recipeId) {
+      player = new YT.Player(`ytplayer-${i}`, {
+        height: '150',
+        width: '250',
+        videoId: recipeId
+      });
+    }
+  
+  });
+  // End of Youtube API script
 
 //Previous Search Storage and Retrieval
 
@@ -124,3 +138,4 @@ function retrieveIngredients() {
     })
   }
 }
+
