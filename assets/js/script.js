@@ -1,17 +1,17 @@
 // Add event listener to the form when it is submitted
 $(document).ready(function(){
-  retrieveIngredients();
+  //retrieveIngredients();
 document.getElementById('user-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
-    var SPOONACULAR_KEY = "fa525252038c4c7b9eab77fa927efd6f";
+    var SPOONACULAR_KEY = "7e276a12a73b44419214ef5b1b3f773a";
     let ingredient = $('#ingredient').val(); // Get the value entered in the 'ingredient' input field
 
     if (ingredient === '') {
       displayError('Please enter an ingredient.');
     } else {
       // Calls the ingredientStorage for local storage
-      ingredientStorage(ingredient)
+      //ingredientStorage(ingredient)
       
       fetch(
         `https://api.spoonacular.com/recipes/complexSearch?query=${ingredient}&apiKey=${SPOONACULAR_KEY}`
@@ -19,11 +19,23 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
         .then(response => response.json()) // Parse the response as JSON
         .then(data => {
           // Display recipe data on the page
+          // Display recipe images on the page
+        
           $('#recipe-1').text(data.results[0].title);
+          $('#recipe-1-img').attr("src", data.results[0].image);
+        
           $('#recipe-2').text(data.results[1].title);
+          $('#recipe-2-img').attr("src", data.results[1].image);
+
           $('#recipe-3').text(data.results[2].title);
+          $('#recipe-3-img').attr("src", data.results[2].image);
+
           $('#recipe-4').text(data.results[3].title);
+          $('#recipe-4-img').attr("src", data.results[3].image);
+
           $('#recipe-5').text(data.results[4].title);
+          $('#recipe-5-img').attr("src", data.results[4].image);
+
         })
         .catch(error => console.error('Error:', error)); // Handle any errors that occur during the fetch request
     }
