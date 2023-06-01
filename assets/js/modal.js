@@ -1,5 +1,4 @@
 // Get the modal
-var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
 var btn1 = document.getElementById("myBtn-1");
@@ -9,37 +8,46 @@ var btn4 = document.getElementById("myBtn-4");
 var btn5 = document.getElementById("myBtn-5");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
-btn1.onclick = function () {
-  modal.style.display = "block";
-};
 
-btn2.onclick = function () {
-  modal.style.display = "block";
-};
+// added the code below
+var allButtons = document.getElementsByClassName("button");
+console.log(allButtons);
+for (let i = 0; i < allButtons.length; i++) {
+  var currentButton = allButtons[i];
+  currentButton.addEventListener("click", showModal);
+}
 
-btn3.onclick = function () {
-  modal.style.display = "block";
-};
+function showModal(event) {
+  console.log(event);
+  console.log(event.target);
+  var parent = event.target.parentElement;
+  console.log(parent);
+  var modalArea = parent.children[1];
+  console.log(modalArea);
+  modalArea.style.display = "block";
+}
 
-btn4.onclick = function () {
-  modal.style.display = "block";
-};
-
-btn5.onclick = function () {
-  modal.style.display = "block";
-};
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  modal.style.display = "none";
-};
-
-// When the user clicks anywhere outside of the modal, close it
+// work on this functionality
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 };
+
+// added below
+var allSpans = document.getElementsByTagName("span");
+for (let i = 0; i < allSpans.length; i++) {
+  var currentSpan = allSpans[i];
+  currentSpan.addEventListener("click", hideModal);
+}
+
+// the modal is still open even though the content disappears
+var allModals = document.getElementsByClassName("modal");
+function hideModal(event) {
+  console.log(event);
+  console.log(event.target);
+  var allModals = event.target.parentElement;
+  allModals.style.display = "none";
+}
