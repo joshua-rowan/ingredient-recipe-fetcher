@@ -26,17 +26,16 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
           $('#recipe-1-img').attr("src", data.results[0].image);
         
           $('#recipe-2').text(data.results[1].title);
-          $('#recipe-1-img').attr("src", data.results[1].image);
+          $('#recipe-2-img').attr("src", data.results[1].image);
 
           $('#recipe-3').text(data.results[2].title);
-          $('#recipe-1-img').attr("src", data.results[2].image);
+          $('#recipe-3-img').attr("src", data.results[2].image);
 
           $('#recipe-4').text(data.results[3].title);
-          $('#recipe-1-img').attr("src", data.results[3].image);
+          $('#recipe-4-img').attr("src", data.results[3].image);
 
           $('#recipe-5').text(data.results[4].title);
-          $('#recipe-1-img').attr("src", data.results[4].image);
-          
+          $('#recipe-5-img').attr("src", data.results[4].image);
         })
       // Calls Youtube script
         .then(() => {
