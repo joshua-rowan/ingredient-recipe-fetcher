@@ -1,25 +1,26 @@
 .hero {
   position: absolute;
-  width: 50%;
+  width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
   align-items: center;
   background-image: url("../images/food.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  filter: brightness(75%);
+  filter: brightness(100%);
   top: 0;
   left: 0;
 }
-/* 
+
 .hero::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-} */
+}
 
 .hero-content {
   position: relative;
@@ -27,16 +28,65 @@
   color: black;
   text-align: center;
   margin: 0.625rem;
-  filter: brightness(100%);
 }
 .hero-title {
-  font-size: 3rem;
-  font-weight: 600;
-  margin-bottom: 0;
-  background-color: blueviolet;
+  font-size: 60pt;
+  /*change font-size in media query*/
+  font-weight: 500;
+  margin-top: 1pc;
+  margin-bottom: 3pc;
+  font-family: "Caveat", sans-serif;
 }
 .hero-subtitle {
-  font-size: 2rem;
+  font-size: 50pt;
   font-weight: 200;
   margin-top: 1rem;
+}
+
+section {
+  display: inline-block;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 800px) {
+  .hero > div {
+    width: 75%;
+  }
+  .hero-content {
+    color: rgb(255, 255, 255);
+  }
+}
+.card {
+  margin-bottom: 6ch;
+  margin-left: 1ch;
+  margin-top: 1ch;
+}
+
+#search-card {
+  margin-bottom: 5ch;
+  background: none;
+}
+
+.card-header {
+  font-size: 25pt;
+  font-family: "Caveat", sans-serif;
+  color: black;
+  justify-content: center;
+}
+
+/* do the .card.three through five */
+.button {
+  margin: 1ch;
+}
+
+.button.is-warning {
+  background-color: hsl(30, 81%, 59%);
+  border-color: transparent;
+  color: rgba(0, 0, 0, 0.7);
 }
