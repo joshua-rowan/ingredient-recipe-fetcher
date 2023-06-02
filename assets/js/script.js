@@ -17,6 +17,7 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
       fetch(
         `https://api.spoonacular.com/recipes/complexSearch?query=${ingredient}&apiKey=${SPOONACULAR_KEY}`
       )
+
         .then(response => response.json()) // Parse the response as JSON
         .then(data => {
           // Display recipe data on the page
