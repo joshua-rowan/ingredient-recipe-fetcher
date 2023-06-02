@@ -1,5 +1,5 @@
 // Get the modal
-
+var modal = null;
 // Get the button that opens the modal
 var btn1 = document.getElementById("myBtn-1");
 var btn2 = document.getElementById("myBtn-2");
@@ -27,12 +27,16 @@ function showModal(event) {
   var modalArea = parent.children[1];
   console.log(modalArea);
   modalArea.style.display = "block";
+  setTimeout(() => {
+    modal = modalArea;
+  }, 1);
 }
 
 // work on this functionality
 window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (modal != null) {
+    if (!event.target.classList.contains("modal-item"))
+      modal.style.display = "none";
   }
 };
 
@@ -50,4 +54,5 @@ function hideModal(event) {
   console.log(event.target);
   var allModals = event.target.parentElement;
   allModals.style.display = "none";
+  modal = null;
 }
