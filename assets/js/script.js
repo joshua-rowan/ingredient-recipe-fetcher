@@ -5,7 +5,7 @@ $(document).ready(function(){
 document.getElementById('user-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
-    var SPOONACULAR_KEY = "598e36c4a81146829ca834e1147e2b3c";
+    var SPOONACULAR_KEY = "9dac80661e8f41f7bba0d9df64fcc208";
     let ingredient = $('#ingredient').val(); // Get the value entered in the 'ingredient' input field
 
     if (ingredient === '') {
@@ -133,12 +133,8 @@ function retrieveIngredients() {
         document.getElementById("user-form").dispatchEvent(new Event("submit"));
       });
 
-      //let buttonContainer = document.createElement("div");
-      //buttonContainer.classList.add("d-grid");
-      //buttonContainer.appendChild(button);
-
       oldSearchesDiv.appendChild(button);
-    })
+    });
   }
 }
 
