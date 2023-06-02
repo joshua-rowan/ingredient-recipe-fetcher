@@ -37,6 +37,9 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
 
           $('#recipe-5').text(data.results[4].title);
           $('#recipe-5-img').attr("src", data.results[4].image);
+
+          //display recipe section
+          $("#recipe-section").show();
         })
       // Calls Youtube script
         .then(() => {
