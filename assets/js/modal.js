@@ -1,17 +1,5 @@
-// Get the modal
 var modal = null;
-// Get the button that opens the modal
-var btn1 = document.getElementById("myBtn-1");
-var btn2 = document.getElementById("myBtn-2");
-var btn3 = document.getElementById("myBtn-3");
-var btn4 = document.getElementById("myBtn-4");
-var btn5 = document.getElementById("myBtn-5");
 
-// Get the <span> element that closes the modal
-
-// When the user clicks on the button, open the modal
-
-// added the code below
 var allButtons = document.getElementsByClassName("button");
 console.log(allButtons);
 for (let i = 0; i < allButtons.length; i++) {
@@ -32,7 +20,6 @@ function showModal(event) {
   }, 1);
 }
 
-// work on this functionality
 window.onclick = function (event) {
   if (modal != null) {
     if (!event.target.classList.contains("modal-item"))
@@ -40,19 +27,17 @@ window.onclick = function (event) {
   }
 };
 
-// added below
 var allSpans = document.getElementsByTagName("span");
 for (let i = 0; i < allSpans.length; i++) {
   var currentSpan = allSpans[i];
   currentSpan.addEventListener("click", hideModal);
 }
 
-// the modal is still open even though the content disappears
 var allModals = document.getElementsByClassName("modal");
 function hideModal(event) {
   console.log(event);
   console.log(event.target);
-  var allModals = event.target.parentElement;
+  var allModals = event.target.parentElement.parentElement;
   allModals.style.display = "none";
   modal = null;
 }
