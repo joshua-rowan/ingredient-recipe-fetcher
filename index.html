@@ -11,14 +11,17 @@
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
     <link
-    rel="stylesheet"
+      rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Caveat"
-      
     />
     <!-- <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     /> -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/modal.css" />
+  <title>Practice</title>
+</head>
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/modal.css" />
     <title>Ingredient Recipe Fetcher</title>
@@ -41,90 +44,104 @@
             type="text"
             autofocus="true"
             class="form-input"
-            value="rice, lemon, etc."
+            placeholder="rice, lemon, etc."
           />
           <button type="submit" class="btn">Submit</button>
         </form>
+        <div id="old-searches"></div>
       </section>
-      <main>
-      <div class="card">
-        <h3 class="card-header" id="recipe-1">Recipe 1</h3>
-        <img id="recipe-1-img" src="" alt="Recipe Image">
-        <div id="recipe-results" class="card-body">
-          <button class="button is-warning" id="myBtn-1">
-            Recipe 1 Modal
-          </button>
-          <div id="myModal" class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>I'm recipe 1!</p>
-            </div>
-            <div id="player-1-zone">
-            </div>
 
-      <div class="card">
-        <h3 class="card-header" id="recipe-2">Recipe 2</h3>
-        <img id="recipe-2-img" src="" alt="Recipe Image">
-        <div id="recipe-results" class="card-body">
-          <button class="button is-warning" id="myBtn-2">Recipe 2 Modal</button>
-          <div id="myModal" class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>I'm recipe 2!</p>
+      <main id="recipe-section">
+        <div class="card">
+          <h3 class="card-header" id="recipe-1">Recipe 1</h3>
+          <img id="recipe-1-img" src="" alt="Recipe Image" />
+          <div id="recipe-results" class="card-body">
+            <button class="button is-warning" id="myBtn-1">
+              Recipe 1 Modal
+            </button>
+            <div id="myModal" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>I'm recipe 1!</p>
+              </div>
             </div>
-          <div id="player-2-zone" class="btn">Video placehold </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3 class="card-header" id="recipe-3">Recipe 3</h3>
-        <img id="recipe-3-img" src="" alt="Recipe Image">
-        <div id="recipe-results" class="card-body">
-          <button class="button is-warning" id="myBtn-3">Recipe 3 Modal</button>
-          <div id="myModal" class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>I'm recipe 3!</p>
-            </div>
-          <div id="player-3-zone" class="btn">Video placeholder</div>
-
-
-
-      <div class="card">
-        <h3 class="card-header" id="recipe-4">Recipe 4</h3>
-        <img id="recipe-4-img" src="" alt="Recipe Image">
-        <div id="recipe-results" class="card-body">
-          <button class="button is-warning" id="myBtn-4">Recipe 4 Modal</button>
-          <div id="myModal" class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>I'm recipe 4!</p>
-            </div>
-            <div id="player-4-zone" class="btn">Video placeholder</div>
+            <div id="player-1-zone"></div>
           </div>
         </div>
 
-      <div class="card">
-        <h3 class="card-header" id="recipe-5">Recipe 5</h3>
-        <img id="recipe-5-img" src="" alt="Recipe Image">
-        <div id="recipe-results" class="card-body">
-          <button class="button is-warning" id="myBtn-5">Recipe 5 Modal</button>
-          <div id="myModal" class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>I'm recipe 5!</p>
+        <div class="card">
+          <h3 class="card-header" id="recipe-2">Recipe 2</h3>
+          <img id="recipe-2-img" src="" alt="Recipe Image" />
+          <div id="recipe-results" class="card-body">
+            <button class="button is-warning" id="myBtn-2">
+              Recipe 2 Modal
+            </button>
+            <div id="myModal" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>I'm recipe 2!</p>
+              </div>
             </div>
-             <div id="player-5-zone" class="btn">Video placeholder</div>
+            <div id="player-2-zone"></div>
           </div>
-
         </div>
-      </section>
-    </main>
-  </div>
+
+        <div class="card">
+          <h3 class="card-header" id="recipe-3">Recipe 3</h3>
+          <img id="recipe-3-img" src="" alt="Recipe Image" />
+          <div id="recipe-results" class="card-body">
+            <button class="button is-warning" id="myBtn-3">
+              Recipe 3 Modal
+            </button>
+            <div id="myModal" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>I'm recipe 3!</p>
+              </div>
+            </div>
+            <div id="player-3-zone"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-header" id="recipe-4">Recipe 4</h3>
+          <img id="recipe-4-img" src="" alt="Recipe Image" />
+          <div id="recipe-results" class="card-body">
+            <button class="button is-warning" id="myBtn-4">
+              Recipe 4 Modal
+            </button>
+            <div id="myModal" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>I'm recipe 4!</p>
+              </div>
+            </div>
+            <div id="player-4-zone"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-header" id="recipe-5">Recipe 5</h3>
+          <img id="recipe-5-img" src="" alt="Recipe Image" />
+          <div id="recipe-results" class="card-body">
+            <button class="button is-warning" id="myBtn-5">
+              Recipe 5 Modal
+            </button>
+            <div id="myModal" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>I'm recipe 5!</p>
+              </div>
+            </div>
+            <div id="player-5-zone"></div>
+          </div>
+        </div>
+      </main>
+    </div>
   </body>
 
-    <!-- </section> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="./assets/js/modal.js"></script>
-    <script src="./assets/js/script.js"></script>
+  <!-- </section> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="./assets/js/modal.js"></script>
+  <script src="./assets/js/script.js"></script>
 </html>

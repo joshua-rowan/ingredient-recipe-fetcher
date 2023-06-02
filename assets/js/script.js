@@ -1,22 +1,23 @@
 // Add event listener to the form when it is submitted
 
 $(document).ready(function(){
-  //retrieveIngredients();
+  retrieveIngredients();
 document.getElementById('user-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
-    var SPOONACULAR_KEY = "7e276a12a73b44419214ef5b1b3f773a";
+    var SPOONACULAR_KEY = "598e36c4a81146829ca834e1147e2b3c";
     let ingredient = $('#ingredient').val(); // Get the value entered in the 'ingredient' input field
 
     if (ingredient === '') {
       displayError('Please enter an ingredient.');
     } else {
       // Calls the ingredientStorage for local storage
-      //ingredientStorage(ingredient)
+      ingredientStorage(ingredient)
       
       fetch(
         `https://api.spoonacular.com/recipes/complexSearch?query=${ingredient}&apiKey=${SPOONACULAR_KEY}`
       )
+
         .then(response => response.json()) // Parse the response as JSON
         .then(data => {
           // Display recipe data on the page
@@ -36,6 +37,9 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
 
           $('#recipe-5').text(data.results[4].title);
           $('#recipe-5-img').attr("src", data.results[4].image);
+
+          //display recipe section
+          $("#recipe-section").show();
         })
       // Calls Youtube script
         .then(() => {
@@ -54,7 +58,7 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   
-    var YOUTUBE_KEY = "AIzaSyBHA_8ZW1dMQRFMoF1vXgt2FIsaChA67VU"
+    var YOUTUBE_KEY = "AIzaSyClmA-vVU22gtzHVrndDe0hRL_GVocH7CQ"
     // AIzaSyClmA-vVU22gtzHVrndDe0hRL_GVocH7CQ 
     // AIzaSyBHA_8ZW1dMQRFMoF1vXgt2FIsaChA67VU
   
@@ -122,19 +126,18 @@ function retrieveIngredients() {
     searches.forEach(function(ingredient) {
       let button = document.createElement("button");
       button.textContent = ingredient;
-      button.classList.add("btn", "btn-primary", "mb-2", "old-search-btn");
-      button.style.backgroundColor = "#6c757d";
+      button.classList.add("button", "is-small");
 
       button.addEventListener("click", function() {
         document.getElementById("ingredient").value = ingredient;
         document.getElementById("user-form").dispatchEvent(new Event("submit"));
       });
 
-      let buttonContainer = document.createElement("div");
-      buttonContainer.classList.add("d-grid");
-      buttonContainer.appendChild(button);
+      //let buttonContainer = document.createElement("div");
+      //buttonContainer.classList.add("d-grid");
+      //buttonContainer.appendChild(button);
 
-      oldSearchesDiv.appendChild(buttonContainer);
+      oldSearchesDiv.appendChild(button);
     })
   }
 }

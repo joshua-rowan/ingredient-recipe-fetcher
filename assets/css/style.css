@@ -90,3 +90,7 @@ main {
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
+
+#recipe-section {
+  display: none;
+}
