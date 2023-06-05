@@ -1,5 +1,5 @@
 var modal = null;
-var SPOONACULAR_KEY = '01d54d113fa3413e9f88780f29f78c1f';
+var SPOONACULAR_KEY = "01d54d113fa3413e9f88780f29f78c1f";
 
 var allButtons = document.getElementsByClassName("button");
 console.log(allButtons);
@@ -16,41 +16,56 @@ function showModal(event) {
   var modalArea = parent.children[1];
   console.log(modalArea);
 
-   // Get the recipe id from the button's data-recipe-id attribute
-  let recipeId = $(event.target).data('recipeId');
+  // Get the recipe id from the button's data-recipe-id attribute
+  let recipeId = $(event.target).data("recipeId");
 
   // Fetch the recipe information from the Spoonacular API
-  fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${SPOONACULAR_KEY}`)
-    .then(response => response.json())  // Convert the response to JSON
-    .then(recipe => {  // Handle the JSON data
-   let ingredientsList = '<ul>';
-   recipe.extendedIngredients.forEach(ingredient => {
-   ingredientsList += '<li>' + ingredient.original + '</li>';
-     });
-     ingredientsList += '</ul>';
-   
-    // Fetch the recipe instructions from the Spoonacular API
-    return fetch(`https://api.spoonacular.com/recipes/${recipeId}/analyzedInstructions?apiKey=${SPOONACULAR_KEY}`)
-      .then(response => response.json())  // Convert the response to JSON
-      .then(instructionData => {  // Handle the JSON data
-     let instructions = '<ol>';
-     instructionData[0].steps.forEach(step => {
-     instructions += '<li>' + step.step + '</li>';
-       });
-       instructions += '</ol>';
-  
-  let modalContent = modalArea.querySelector(".modal-content");
-  modalContent.innerHTML = '';
-  modalContent.innerHTML = '<span class="close modal-item">&times;</span><h2>' + recipe.title + " ingreidents:" + '</h2>' + ingredientsList + '<h3>Step by step guide:</h3>' + instructions;
-  modalContent.querySelector(".close").addEventListener("click", hideModal);
-  modalArea.style.display = "block";
-  
-  setTimeout(() => {
-    modal = modalArea;
-      }, 1);
-    });
-  })
-.catch(error => console.error('Error:', error)); 
+  fetch(
+    `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${SPOONACULAR_KEY}`
+  )
+    .then((response) => response.json()) // Convert the response to JSON
+    .then((recipe) => {
+      // Handle the JSON data
+      let ingredientsList = "<ul>";
+      recipe.extendedIngredients.forEach((ingredient) => {
+        ingredientsList += "<li>" + ingredient.original + "</li>";
+      });
+      ingredientsList += "</ul>";
+
+      // Fetch the recipe instructions from the Spoonacular API
+      return fetch(
+        `https://api.spoonacular.com/recipes/${recipeId}/analyzedInstructions?apiKey=${SPOONACULAR_KEY}`
+      )
+        .then((response) => response.json()) // Convert the response to JSON
+        .then((instructionData) => {
+          // Handle the JSON data
+          let instructions = "<ol>";
+          instructionData[0].steps.forEach((step) => {
+            instructions += "<li>" + step.step + "</li>";
+          });
+          instructions += "</ol>";
+
+          let modalContent = modalArea.querySelector(".modal-content");
+          modalContent.innerHTML = "";
+          modalContent.innerHTML =
+            '<span class="close modal-item">&times;</span><h2>' +
+            recipe.title +
+            " ingredients:" +
+            "</h2>" +
+            ingredientsList +
+            "<h3>Step by step guide:</h3>" +
+            instructions;
+          modalContent
+            .querySelector(".close")
+            .addEventListener("click", hideModal);
+          modalArea.style.display = "block";
+
+          setTimeout(() => {
+            modal = modalArea;
+          }, 1);
+        });
+    })
+    .catch((error) => console.error("Error:", error));
 }
 
 window.onclick = function (event) {
