@@ -1,4 +1,5 @@
 var modal = null;
+var SPOONACULAR_KEY = 'b2632f0e4a134023bd9e442f179164f5';
 
 var allButtons = document.getElementsByClassName("button");
 console.log(allButtons);
@@ -14,10 +15,31 @@ function showModal(event) {
   console.log(parent);
   var modalArea = parent.children[1];
   console.log(modalArea);
+
+   // Get the recipe id from the button's data-recipe-id attribute
+  let recipeId = $(event.target).data('recipeId');
+
+  // Fetch the recipe information from the Spoonacular API
+  fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${SPOONACULAR_KEY}`)
+    .then(response => response.json())  // Convert the response to JSON
+    .then(recipe => {  // Handle the JSON data
+   let ingredientsList = '<ul>';
+   recipe.extendedIngredients.forEach(ingredient => {
+   ingredientsList += '<li>' + ingredient.original + '</li>';
+     });
+     ingredientsList += '</ul>';
+  
+  let modalContent = modalArea.querySelector(".modal-content");
+  modalContent.innerHTML = '';
+  modalContent.innerHTML = '<span class="close modal-item">&times;</span><h2>' + recipe.title + '</h2>' + ingredientsList;
+  modalContent.querySelector(".close").addEventListener("click", hideModal);
   modalArea.style.display = "block";
+  
   setTimeout(() => {
     modal = modalArea;
   }, 1);
+})
+.catch(error => console.error('Error:', error)); 
 }
 
 window.onclick = function (event) {

@@ -25,19 +25,24 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
         
           $('#recipe-1').text(data.results[0].title);
           $('#recipe-1-img').attr("src", data.results[0].image);
+          $('#myBtn-1').data('recipe-id', data.results[0].id);
         
           $('#recipe-2').text(data.results[1].title);
           $('#recipe-2-img').attr("src", data.results[1].image);
-
+          $('#myBtn-2').data('recipe-id', data.results[1].id);
+        
           $('#recipe-3').text(data.results[2].title);
           $('#recipe-3-img').attr("src", data.results[2].image);
-
+          $('#myBtn-3').data('recipe-id', data.results[2].id);
+        
           $('#recipe-4').text(data.results[3].title);
           $('#recipe-4-img').attr("src", data.results[3].image);
-
+          $('#myBtn-4').data('recipe-id', data.results[3].id);
+        
           $('#recipe-5').text(data.results[4].title);
           $('#recipe-5-img').attr("src", data.results[4].image);
-
+          $('#myBtn-5').data('recipe-id', data.results[4].id);
+        
           //display recipe section
           $("#recipe-section").show();
         })
