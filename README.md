@@ -24,6 +24,9 @@ SO THAT I get a recipe result with a youtube video
 ## Acknowledgements
 * This app pulls recipe using the API at https://spoonacular.com/food-api
 * This app pulls videos using the API from youtube.com
+* This app uses the Bulma style library
+* This app uses Google Fonts
+* This app uses JQuery
 
 ## Installation
 N/A
