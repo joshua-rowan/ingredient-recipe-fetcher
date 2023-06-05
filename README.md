@@ -10,7 +10,12 @@ The Ingredient Recipe Maker solves this problem. The user can input their ingred
 https://joshua-rowan.github.io/ingredient-recipe-fetcher/
 
 ## Screenshot
-Coming Soon!
+Recipe Maker Start Page
+![recipe maker empty](https://github.com/joshua-rowan/ingredient-recipe-fetcher/assets/127271690/b3fab67e-fb3a-4d94-9ce1-a011873be1b1)
+Recipe Maker After a Search
+![recipe maker strawberries](https://github.com/joshua-rowan/ingredient-recipe-fetcher/assets/127271690/3886a4c0-4edd-41be-8ae8-ad214f4b6532)
+Recipe Maker Start Page with Buttons Feature
+![recipe maker buttons](https://github.com/joshua-rowan/ingredient-recipe-fetcher/assets/127271690/cb1c47dd-1c0a-43de-8f50-b26dfc21ec2c)
 
 ## Walkthrough
 Coming Soon!
