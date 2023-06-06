@@ -63,7 +63,7 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   
-    var YOUTUBE_KEY = "AIzaSyBHA_8ZW1dMQRFMoF1vXgt2FIsaChA67VU"
+    var YOUTUBE_KEY = "AIzaSyDn69eLTO-ZFA08lwMCiNoIygGQovkfI_s"
     // AIzaSyClmA-vVU22gtzHVrndDe0hRL_GVocH7CQ 
     // AIzaSyBHA_8ZW1dMQRFMoF1vXgt2FIsaChA67VU
   
