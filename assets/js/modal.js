@@ -1,20 +1,17 @@
 var modal = null;
+
 var SPOONACULAR_KEY = "4f8a937874c143d6af299911c017cdb7";
 
+
 var allButtons = document.getElementsByClassName("button");
-console.log(allButtons);
 for (let i = 0; i < allButtons.length; i++) {
   var currentButton = allButtons[i];
   currentButton.addEventListener("click", showModal);
 }
 
 function showModal(event) {
-  console.log(event);
-  console.log(event.target);
   var parent = event.target.parentElement;
-  console.log(parent);
   var modalArea = parent.children[1];
-  console.log(modalArea);
 
   // Get the recipe id from the button's data-recipe-id attribute
   let recipeId = $(event.target).data("recipeId");
@@ -83,8 +80,6 @@ for (let i = 0; i < allSpans.length; i++) {
 
 var allModals = document.getElementsByClassName("modal");
 function hideModal(event) {
-  console.log(event);
-  console.log(event.target);
   var allModals = event.target.parentElement.parentElement;
   allModals.style.display = "none";
   modal = null;
