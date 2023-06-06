@@ -1,5 +1,5 @@
 var modal = null;
-var SPOONACULAR_KEY = "4da5f226f9ad4694b2bbc7b3c80b1ae3";
+var SPOONACULAR_KEY = "fd975271ffef47239848e4218c9b3b01";
 
 var allButtons = document.getElementsByClassName("button");
 console.log(allButtons);
