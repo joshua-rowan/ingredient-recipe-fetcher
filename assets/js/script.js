@@ -5,7 +5,7 @@ $(document).ready(function(){
 document.getElementById('user-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
-    var SPOONACULAR_KEY = "4da5f226f9ad4694b2bbc7b3c80b1ae3";
+    var SPOONACULAR_KEY = "fd975271ffef47239848e4218c9b3b01";
     let ingredient = $('#ingredient').val(); // Get the value entered in the 'ingredient' input field
 
     if (ingredient === '') {
